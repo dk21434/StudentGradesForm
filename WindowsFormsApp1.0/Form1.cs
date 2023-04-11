@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Excel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -25,31 +26,46 @@ namespace WindowsFormsApp1._0
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            DataTable dt = new DataTable();
-            dt = ws.GetDataTable();
-            dataGridView2.DataSource = dt;
-        }
-
+       
         private void button2_Click(object sender, EventArgs e)
         {
-            DataTable dt = new DataTable();
+            System.Data.DataTable dt = new System.Data.DataTable();
             dt = ws.GetAverage();
             dataGridView1.DataSource = dt;
         }
 
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
+        
         private void button3_Click(object sender, EventArgs e)
         {
-            DataTable dt = new DataTable();
+            System.Data.DataTable dt = new System.Data.DataTable();
             dt = ws.GetAverage();
+            dataGridView1.SelectAll();
+           
+            DataObject obj = dataGridView1.GetClipboardContent();
+            Clipboard.SetDataObject(obj);
 
-     
+
+            Microsoft.Office.Interop.Excel.Application xls = new Microsoft.Office.Interop.Excel.Application();
+            Microsoft.Office.Interop.Excel.Workbook xlwb;
+            Microsoft.Office.Interop.Excel.Worksheet xlws;
+            Microsoft.Office.Interop.Excel.Range xlr;
+
+            Object mv = System.Reflection.Missing.Value;
+
+            
+            xlwb = xls.Workbooks.Add(mv);
+            xlws = xlwb.Worksheets.get_Item(1);
+            xlr = xlws.Cells[1, 1];
+            xlr.Select();
+            xlws.PasteSpecial(xlr, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
+            xls.Columns.AutoFit();
+            xls.Visible = true;
+
+
+
+
         }
+
+       
     }
 }
