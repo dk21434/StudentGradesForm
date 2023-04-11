@@ -51,6 +51,23 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetTop5">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetTop5Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTop5Result">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="GetAllSoapIn">
@@ -71,6 +88,12 @@
   <wsdl:message name="GetAverageSoapOut">
     <wsdl:part name="parameters" element="tns:GetAverageResponse" />
   </wsdl:message>
+  <wsdl:message name="GetTop5SoapIn">
+    <wsdl:part name="parameters" element="tns:GetTop5" />
+  </wsdl:message>
+  <wsdl:message name="GetTop5SoapOut">
+    <wsdl:part name="parameters" element="tns:GetTop5Response" />
+  </wsdl:message>
   <wsdl:portType name="WebService1Soap">
     <wsdl:operation name="GetAll">
       <wsdl:input message="tns:GetAllSoapIn" />
@@ -83,6 +106,10 @@
     <wsdl:operation name="GetAverage">
       <wsdl:input message="tns:GetAverageSoapIn" />
       <wsdl:output message="tns:GetAverageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTop5">
+      <wsdl:input message="tns:GetTop5SoapIn" />
+      <wsdl:output message="tns:GetTop5SoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WebService1Soap" type="tns:WebService1Soap">
@@ -114,6 +141,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetTop5">
+      <soap:operation soapAction="http://tempuri.org/GetTop5" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="WebService1Soap12" type="tns:WebService1Soap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -137,6 +173,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetAverage">
       <soap12:operation soapAction="http://tempuri.org/GetAverage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTop5">
+      <soap12:operation soapAction="http://tempuri.org/GetTop5" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

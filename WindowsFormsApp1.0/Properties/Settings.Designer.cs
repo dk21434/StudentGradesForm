@@ -27,9 +27,9 @@ namespace WindowsFormsApp1._0.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
         [global::System.Configuration.DefaultSettingValueAttribute("https://localhost:44338/WebService1.asmx")]
-        public string WindowsFormsApp1_0_localws_WebService1 {
+        public string WindowsFormsApp1_0_wService_WebService1 {
             get {
-                return ((string)(this["WindowsFormsApp1_0_localws_WebService1"]));
+                return ((string)(this["WindowsFormsApp1_0_wService_WebService1"]));
             }
         }
     }

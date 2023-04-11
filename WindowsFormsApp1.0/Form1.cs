@@ -1,5 +1,6 @@
 ﻿using Microsoft.Office.Interop.Excel;
 using System.Collections.Generic;
+using System;
 using System.Data;
 using System.ComponentModel;
 using System.Drawing;
@@ -12,7 +13,7 @@ namespace WindowsFormsApp1._0
 {
     public partial class Form1 : Form
     {
-        localws.WebService1 ws = new localws.WebService1();
+        wService.WebService1 ws = new wService.WebService1();
 
 
         public Form1()
@@ -28,7 +29,7 @@ namespace WindowsFormsApp1._0
        
         private void button2_Click(object sender, EventArgs e)
         {
-            DataTable dt = new DataTable();
+            System.Data.DataTable dt = new System.Data.DataTable();
             dt = ws.GetAverage();
             dataGridView1.DataSource = dt;
 
@@ -37,7 +38,7 @@ namespace WindowsFormsApp1._0
 
         private void button3_Click(object sender, EventArgs e)
         {
-            DataTable dt = new DataTable();
+            System.Data.DataTable dt = new System.Data.DataTable();
             dt = ws.GetAverage();
 
             CopyDataGridViewToClipboard(dataGridView1);
@@ -75,6 +76,6 @@ namespace WindowsFormsApp1._0
             dataGridView.ClearSelection();
         }
 
-
+        
     }
 }

@@ -13,7 +13,7 @@
 // 
 #pragma warning disable 1591
 
-namespace WindowsFormsApp1._0.localws {
+namespace WindowsFormsApp1._0.wService {
     using System.Diagnostics;
     using System;
     using System.Xml.Serialization;
@@ -36,11 +36,13 @@ namespace WindowsFormsApp1._0.localws {
         
         private System.Threading.SendOrPostCallback GetAverageOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetTop5OperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
         public WebService1() {
-            this.Url = global::WindowsFormsApp1._0.Properties.Settings.Default.WindowsFormsApp1_0_localws_WebService1;
+            this.Url = global::WindowsFormsApp1._0.Properties.Settings.Default.WindowsFormsApp1_0_wService_WebService1;
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;
@@ -82,6 +84,9 @@ namespace WindowsFormsApp1._0.localws {
         
         /// <remarks/>
         public event GetAverageCompletedEventHandler GetAverageCompleted;
+        
+        /// <remarks/>
+        public event GetTop5CompletedEventHandler GetTop5Completed;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetAll", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -161,6 +166,33 @@ namespace WindowsFormsApp1._0.localws {
             if ((this.GetAverageCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetAverageCompleted(this, new GetAverageCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetTop5", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataTable GetTop5() {
+            object[] results = this.Invoke("GetTop5", new object[0]);
+            return ((System.Data.DataTable)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetTop5Async() {
+            this.GetTop5Async(null);
+        }
+        
+        /// <remarks/>
+        public void GetTop5Async(object userState) {
+            if ((this.GetTop5OperationCompleted == null)) {
+                this.GetTop5OperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetTop5OperationCompleted);
+            }
+            this.InvokeAsync("GetTop5", new object[0], this.GetTop5OperationCompleted, userState);
+        }
+        
+        private void OnGetTop5OperationCompleted(object arg) {
+            if ((this.GetTop5Completed != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetTop5Completed(this, new GetTop5CompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -248,6 +280,32 @@ namespace WindowsFormsApp1._0.localws {
         private object[] results;
         
         internal GetAverageCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataTable Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataTable)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void GetTop5CompletedEventHandler(object sender, GetTop5CompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetTop5CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetTop5CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

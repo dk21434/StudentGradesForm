@@ -60,7 +60,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Web References\localws\Reference.cs">
+    <Compile Include="Web References\wService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
@@ -87,11 +87,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Web References\localws\Reference.map">
+    <None Include="Web References\wService\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Web References\localws\WebService1.wsdl" />
+    <None Include="Web References\wService\WebService1.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -105,18 +105,18 @@
   <ItemGroup>
     <WebReferenceUrl Include="https://localhost:44338/WebService1.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\localws\</RelPath>
+      <RelPath>Web References\wService\</RelPath>
       <UpdateFromURL>https://localhost:44338/WebService1.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>WindowsFormsApp1_0_localws_WebService1</CachedSettingsPropName>
+      <CachedSettingsPropName>WindowsFormsApp1_0_wService_WebService1</CachedSettingsPropName>
     </WebReferenceUrl>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Web References\localws\WebService1.disco" />
+    <None Include="Web References\wService\WebService1.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
