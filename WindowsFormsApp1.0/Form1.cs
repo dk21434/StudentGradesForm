@@ -76,6 +76,6 @@ namespace WindowsFormsApp1._0
             dataGridView.ClearSelection();
         }
 
-        
+       
     }
 }
