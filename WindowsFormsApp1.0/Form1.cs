@@ -49,7 +49,7 @@ namespace WindowsFormsApp1._0
             DataTable dt = new DataTable();
             dt = ws.GetAverage();
 
-
+     
         }
     }
 }
